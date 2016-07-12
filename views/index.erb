@@ -1,0 +1,23 @@
+<div class="container container-small">
+  <h1>Historiarum Circulae</h1>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th class="text-right">Date</th>
+      <th>Event</th>
+    </thead>
+    <tbody>
+      <% for item in @timeline %>
+      <tr>
+        <td class="text-right"><%=item["date"].to_human%> Uhr</td>
+        <td><a href="<%=item['href']%>" target="_blank"><%=item["title"]%></a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a href="/timeline" class="btn btn-primary btn-fab pull-right"><i class="material-icons">edit</i></a>
+
+  <script type="text/javascript">
+    var data = <%= @timeline_json %>;
+    console.dir(data);
+  </script>
+</div>

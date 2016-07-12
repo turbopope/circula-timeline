@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Historiarum Circulae</h1>
+  <h2>Edit Histroy</h2>
+
+  <p>
+    Ein Eintrag pro Zeile. Ein Eintrag muss das Format <code>%DATUM, %TITEL, %LINK</code> haben. Datum, Link und Titel dürfen keine Kommas und Newlines enthalten.
+  </p>
+  <p>
+    Das Datum muss das Format <code>yyyy-mm-ddThh:mm:ss</code> haben. Monat und Tag fangen bei 1 an, alle anderen bei 0.
+  </p>
+
+  <form action="" method="post">
+    <textarea name="timeline" rows="<%=@timeline.split("\n").length + 3%>" style="width:100%"><%=@timeline%></textarea>
+    <br/>
+    <input type="submit" name="submit" value="Save" class="btn btn-primary btn-raised"></input>
+    <a href="/" class="btn btn-default btn-raised">Back</a>
+  </form>
+</div>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head lang="en">
+  <title>Historiarum Circulae</title>
+  <meta charset="utf-8"></meta>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/css/bootstrap.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/css/bootstrap-material-design.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/css/ripples.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/style-und-das-geld.css" media="screen" charset="utf-8">
+</head>
+
+<body>
+  <canvas id="circlecanvas" width="100%" height="100" style=" "></canvas>
+  <%= yield %>
+
+  <script src="/js/jquery.js" charset="utf-8"></script>
+  <script src="/js/bootstrap.js" charset="utf-8"></script>
+  <script src="/js/material.js" charset="utf-8"></script>
+  <script src="/js/ripples.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    $.material.init();
+    $.material.ripples();
+    $.material.input();
+    $.material.checkbox();
+    $.material.radio();
+  </script>
+
+  <script type="text/javascript">
+
+    function draw() {
+      const PHI = (1 + Math.sqrt(5)) / 2;
+
+      var canvas = document.getElementById("circlecanvas");
+      var context = canvas.getContext("2d");
+      var w = window.innerWidth;
+      var s = document.body.scrollTop;
+      var h = window.innerHeight;
+      context.canvas.width = w;
+      context.canvas.height = h;
+
+      // The Big Bang
+      context.clearRect(0, 0, w, h);
+
+      // The Universe
+      context.fillStyle = "#E0E0E0";
+      context.fillRect(0, 0, w, h);
+
+      // Far moon
+      var x = w / PHI;
+          x += (w - x) / PHI;
+      var y = h;
+      y -= y / PHI;
+      y -= y / PHI;
+      var r = w / (12*PHI);
+      context.beginPath();
+      context.arc(x, y - s/6, r, 0, 2*Math.PI, false);
+      context.fillStyle = "#424242";
+      context.fill();
+
+      // Near moon
+      var x = w - w / PHI;
+      x -= x / PHI;
+      var y = h;
+          y -= y / PHI;
+      var r = w / (6*PHI);
+      context.beginPath();
+      context.arc(x, y - s/3, r, 0, 2*Math.PI, false);
+      context.fillStyle = "#757575";
+      context.fill();
+
+      // Planet
+      var offset = h*PHI*2;
+      var x = w/2;
+      var radius = Math.sqrt(Math.pow(x, 2) + Math.pow(offset, 2));
+      var y = h + offset - s/1.5;
+      context.beginPath();
+      context.arc(x, y, radius, Math.PI, 0, false);
+      context.fillStyle = "#9E9E9E";
+      context.fill()
+
+      // var img = new Image();
+      // img.src = "/dolphin.svg"
+      // img.onload = function() {
+      //   var iw = img.width;
+      //   var ih = img.height;
+      //   // var x = w/2 + 250;
+      //   // var y = h - 100;
+      //   context.translate(iw/2, ih/2);
+      //   // context.rotate(-8 * Math.PI/180);
+      //   context.translate(-iw/2, -ih/2);
+      //   context.drawImage(img, 0, 0, iw, ih, x, y - radius - ih*0.05, iw*0.05, ih*0.05);
+      //   // context.scale(0.1, 0.1);
+      // }
+    }
+
+    window.addEventListener("resize", draw);
+    window.addEventListener("scroll", draw);
+    draw();
+  </script>
+<body>

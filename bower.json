@@ -1,0 +1,21 @@
+{
+  "name": "circula-timeline",
+  "authors": [
+    "Marco Brack <mbrack@uni-koblenz.de>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-design": "^0.5.10"
+  }
+}
