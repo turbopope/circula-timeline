@@ -3,5 +3,7 @@ static/js/*
 !static/js/.keep
 static/css/*
 !static/css/.keep
+backups/*
+!backups/.keep
 backup
 timeline

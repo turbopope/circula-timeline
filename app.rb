@@ -33,6 +33,10 @@ get "/timeline" do
 end
 
 post "/timeline" do
+  require "time"
+  require "fileutils"
+  FileUtils.cp("timeline", "backups/#{DateTime.now.to_s}")
+
   if request.media_type == "application/x-www-form-urlencoded"
     body = params["timeline"] || request.body.read
   else
