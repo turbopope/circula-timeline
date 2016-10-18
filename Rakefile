@@ -24,3 +24,7 @@ task :assets do
   bc "bootstrap/dist/js/bootstrap.js"
   bc "jquery/dist/jquery.js"
 end
+
+task :runprod do
+  sh "RACK_ENV=production nohup ruby app.rb > log 2>&1 &"
+end
