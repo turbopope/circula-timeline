@@ -8,9 +8,9 @@ class CirculaDateTime
   @minute = 0
   @second = 0
 
-  MONTHS_PER_YEAR = 12
-  DAYS_PER_MONTH = 30
-  HOURS_PER_DAY = 28
+  MONTHS_PER_YEAR = 13
+  DAYS_PER_MONTH = 24
+  HOURS_PER_DAY = 2
   MINUTES_PER_HOUR = 60
   SECONDS_PER_MINUTE = 60
 
